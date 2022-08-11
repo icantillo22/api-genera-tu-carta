@@ -43,9 +43,10 @@ const generateResignationLetter = async (req, res) => {
 	} catch (error) {
         res.status(500).json({
             error: true,
-            errorMessage: error,
-        })
-		throw Error('Error upload file to S3', error)
+            errorMessage: error.message,
+        });
+        
+		throw Error('Error upload file to S3', error.message)
 	}
 }
 
